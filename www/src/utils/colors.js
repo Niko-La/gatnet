@@ -57,15 +57,15 @@ const colors = {
   c: [],
   // original palette by @SachaG
   // @see https://www.figma.com/file/J6IYJEtdRmwJQOrcZ2DfvxDD/Gatsby
-  gatsby: `#663399`, // was #744c9e
-  lilac: `#9D7CBF`,
+  gatsby: `#252a34`, // was #744c9e  #F6AA1A, 111f4d
+  lilac: `#ff2e63`,  //#ED3E6D ,1E3150 ,#e43a19
   // accent color from the "bolder palette" by @ArchieHicklin
   // @see https://github.com/gatsbyjs/gatsby/issues/1173#issuecomment-309415650
-  accent: `#ffb238`, // "Mustard",
+  accent: `#E8293A`, // "Mustard",
   success: `#37b635`,
   warning: `#ec1818`,
   ui: {
-    bright: `#e0d6eb`,
+    bright: `#F6AA1A`,
     light: `#f5f3f7`,
     whisper: `#fbfafc`,
   },

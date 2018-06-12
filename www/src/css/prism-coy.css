@@ -46,11 +46,11 @@
 /* } */
 
 .token.regex, .token.important {
-  color: #d88489;
+  color: #af0000;
 }
 
 .language-css .token.string, .style .token.string {
-  color: #a2466c;
+  color: #37bd25;
 }
 
 .token.important {
@@ -76,3 +76,4 @@
 .token.tab:not(:empty):before, .token.cr:before, .token.lf:before {
   color: #e0d7d1;
 }
+

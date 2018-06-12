@@ -4,11 +4,10 @@ import Helmet from "react-helmet"
 import Navigation from "../components/navigation"
 import MobileNavigation from "../components/navigation-mobile"
 import SidebarBody from "../components/sidebar-body"
-import SearchBar from "../components/searchbar-body"
 import tutorialSidebar from "../pages/docs/tutorial-links.yml"
 import docsSidebar from "../pages/docs/doc-links.yaml"
 import featuresSidebar from "../pages/docs/features-links.yaml"
-import { rhythm } from "../utils/typography"
+import { rhythm, scale } from "../utils/typography"
 import presets, { colors } from "../utils/presets"
 import hex2rgba from "hex2rgba"
 import "../css/prism-coy.css"
@@ -26,37 +25,25 @@ import "typeface-space-mono"
 class DefaultLayout extends React.Component {
   render() {
     const isHomepage = this.props.location.pathname == `/`
-    const isBlog = this.props.location.pathname.slice(0, 6) === `/blog/`
-    const isBlogLanding = this.props.location.pathname === `/blog/`
-    const isDoc = this.props.location.pathname.slice(0, 6) === `/docs/`
-    const isTutorial =
-      this.props.location.pathname.slice(0, 10) === `/tutorial/`
-    const isFeature = this.props.location.pathname.slice(0, 9) === `/features`
-    const isPackageSearchPage =
-      this.props.location.pathname.slice(0, 8) === `/plugins` ||
-      this.props.location.pathname.slice(0, 9) === `/packages`
-    const isPackageReadme =
-      this.props.location.pathname.slice(0, 16) === `/packages/gatsby`
-
     const hasSidebar =
-      isDoc || isTutorial || isFeature || isPackageSearchPage || isPackageReadme
-    const isSearchSource = hasSidebar || isBlog
-
-    const packageSidebarWidth = rhythm(17)
-
-    const leftPadding = rhythmSize => {
-      if (isPackageReadme || isPackageSearchPage) {
-        return packageSidebarWidth
-      } else if (hasSidebar) {
-        return rhythm(rhythmSize)
-      } else {
-        return 0
-      }
-    }
-
+      this.props.location.pathname.slice(0, 6) === `/docs/` ||
+      this.props.location.pathname.slice(0, 10) === `/packages/` ||
+      this.props.location.pathname.slice(0, 10) === `/tutorial/` ||
+      this.props.location.pathname.slice(0, 9) === `/features`
+    const isSearchSource = hasSidebar
     const sidebarStyles = {
       borderRight: `1px solid ${colors.ui.light}`,
       backgroundColor: colors.ui.whisper,
+      boxShadow: `inset 0 4px 5px 0 ${hex2rgba(
+        colors.gatsby,
+        presets.shadowKeyPenumbraOpacity
+      )}, inset 0 1px 10px 0 ${hex2rgba(
+        colors.lilac,
+        presets.shadowAmbientShadowOpacity
+      )}, inset 0 2px 4px -1px ${hex2rgba(
+        colors.lilac,
+        presets.shadowKeyUmbraOpacity
+      )}`,
       width: rhythm(10),
       display: `none`,
       position: `fixed`,
@@ -74,62 +61,18 @@ class DefaultLayout extends React.Component {
       "::-webkit-scrollbar-track": {
         background: colors.ui.light,
       },
-    }
-
-    const sidebarStylesDesktop = {
       [presets.Desktop]: {
         width: rhythm(12),
         padding: rhythm(1),
       },
     }
 
-    let searchBarDisplayProperty
-    let childrenMobileDisplay
-    let childrenTabletDisplay
-    if (isPackageSearchPage && !isPackageReadme) {
-      searchBarDisplayProperty = { display: `block` }
-      childrenMobileDisplay = { display: `none` }
-      childrenTabletDisplay = { display: `block` }
-    } else if (isPackageSearchPage && isPackageReadme) {
-      searchBarDisplayProperty = {
-        [presets.Mobile]: {
-          display: `none`,
-        },
-      }
-      childrenMobileDisplay = { display: `block` }
-      childrenTabletDisplay = { display: `block` }
-    } else {
-      searchBarDisplayProperty = {
-        display: `none`,
-      }
-      childrenMobileDisplay = { display: `block` }
-      childrenTabletDisplay = { display: `block` }
-    }
-    const searchbarStyles = {
-      // overrides of sidebarStyles
-      display: `none`,
-      width: `100vw`,
-      padding: rhythm(3 / 4),
-      zIndex: 1,
-      [presets.Desktop]: {
-        ...sidebarStyles,
-        position: `fixed`,
-        overflowY: `hidden`,
-        width: packageSidebarWidth,
-      },
-      ...searchBarDisplayProperty,
-    }
-
     return (
-      <div className={isHomepage ? `is-homepage` : ``}>
-        <Helmet defaultTitle={`GatsbyJS`} titleTemplate={`%s | GatsbyJS`}>
-          <meta name="twitter:site" content="@gatsbyjs" />
+      <div>
+        <Helmet defaultTitle={`Nikola Robotics`} titleTemplate={`%s | GatsbyJS`}>
+          <meta name="twitter:site" content="@diynikola" />
           <meta name="og:type" content="website" />
-          <meta name="og:site_name" content="GatsbyJS" />
-          <link
-            rel="canonical"
-            href={`https://gatsbyjs.org${this.props.location.pathname}`}
-          />
+          <meta name="og:site_name" content="Nikola Robotics" />
           <html lang="en" />
         </Helmet>
         <Navigation pathname={this.props.location.pathname} />
@@ -149,41 +92,27 @@ class DefaultLayout extends React.Component {
             css={{
               ...sidebarStyles,
               [presets.Tablet]: {
-                display: isDoc ? `block` : `none`,
+                display:
+                  this.props.location.pathname.slice(0, 6) === `/docs/` ||
+                  this.props.location.pathname.slice(0, 10) === `/packages/`
+                    ? `block`
+                    : `none`,
               },
-              ...sidebarStylesDesktop,
             }}
           >
             <SidebarBody yaml={docsSidebar} />
           </div>
-
-          {/* This is for the searchbar template */}
-          <div
-            css={{
-              ...searchbarStyles,
-              [presets.Tablet]: {
-                display: isPackageSearchPage
-                  ? `block`
-                  : isPackageSearchPage && isPackageReadme ? `block` : `none`,
-                width: packageSidebarWidth,
-                position: `fixed`,
-                background: colors.ui.whisper,
-                borderRight: `1px solid ${colors.ui.light}`,
-              },
-            }}
-          >
-            <SearchBar history={this.props.history} />
-          </div>
-
           {/* TODO Move this under docs/tutorial/index.js once Gatsby supports multiple levels
                of layouts */}
           <div
             css={{
               ...sidebarStyles,
               [presets.Tablet]: {
-                display: isTutorial ? `block` : `none`,
+                display:
+                  this.props.location.pathname.slice(0, 10) === `/tutorial/`
+                    ? `block`
+                    : `none`,
               },
-              ...sidebarStylesDesktop,
             }}
           >
             <SidebarBody yaml={tutorialSidebar} />
@@ -192,23 +121,22 @@ class DefaultLayout extends React.Component {
             css={{
               ...sidebarStyles,
               [presets.Tablet]: {
-                display: isFeature ? `block` : `none`,
+                display:
+                  this.props.location.pathname.slice(0, 9) === `/features`
+                    ? `block`
+                    : `none`,
               },
-              ...sidebarStylesDesktop,
             }}
           >
             <SidebarBody yaml={featuresSidebar} />
           </div>
-
           <div
             css={{
-              ...childrenMobileDisplay,
               [presets.Tablet]: {
-                paddingLeft: leftPadding(10),
-                ...childrenTabletDisplay,
+                paddingLeft: hasSidebar ? rhythm(10) : 0,
               },
               [presets.Desktop]: {
-                paddingLeft: leftPadding(12),
+                paddingLeft: hasSidebar ? rhythm(12) : 0,
               },
             }}
             className={isSearchSource && `docSearch-content`}

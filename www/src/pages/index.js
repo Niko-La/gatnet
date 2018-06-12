@@ -1,6 +1,5 @@
 import React from "react"
 import Link from "gatsby-link"
-import { OutboundLink } from "gatsby-plugin-google-analytics"
 
 import presets, { colors } from "../utils/presets"
 import { rhythm, scale, options } from "../utils/typography"
@@ -27,6 +26,7 @@ class IndexRoute extends React.Component {
         <MastheadBg />
         <div
           css={{
+            font: 'Futura',
             display: `flex`,
             flexDirection: `row`,
             flexWrap: `wrap`,
@@ -48,46 +48,38 @@ class IndexRoute extends React.Component {
             <Cards>
               <Card>
                 <CardHeadline>
-                  Modern web tech without the headache
+                  Modern cobots without the large price
                 </CardHeadline>
                 <FuturaParagraph>
-                  Enjoy the power of the latest web technologies –{` `}
-                  <TechWithIcon icon={ReactJSIcon}>React.js</TechWithIcon>,{` `}
-                  <TechWithIcon icon={WebpackIcon}>Webpack</TechWithIcon>,{` `}
-                  modern JavaScript and CSS and more — all setup and waiting for
-                  you to start building.
+                  Enjoy the power of the latest colobrative robots–{` `}
+                  <TechWithIcon icon={ReactJSIcon}>AI Vision</TechWithIcon>,{` `}
+                  <TechWithIcon icon={WebpackIcon}>Mobility</TechWithIcon>,{` `}
+                  easy to train and fast deployment — all setup and waiting for
+                  you to start automating.
                 </FuturaParagraph>
               </Card>
               <Card>
-                <CardHeadline>Bring your own data</CardHeadline>
+                <CardHeadline>Leading Artificial Intelligence</CardHeadline>
                 <FuturaParagraph>
-                  Gatsby’s rich data plugin ecosystem lets you build sites with
-                  the data you want — from one or many sources: Pull data from
-                  headless CMSs, SaaS services, APIs, databases, your file
-                  system & more directly into your pages using{` `}
-                  <TechWithIcon icon={GraphQLIcon}>GraphQL</TechWithIcon>.
+                  Nikola Robotics come with powerfull on board Cameras & Machine-Learning processors. 
+                  Add crucial IOT sensors for your automation needs — from one or many jobs: Quickly deploy software with 1 push {` `}
+                  <TechWithIcon icon={GraphQLIcon}> </TechWithIcon>.
                 </FuturaParagraph>
               </Card>
               <Card>
-                <CardHeadline>Scale to the entire internet</CardHeadline>
+                <CardHeadline>Scale to the whole factory</CardHeadline>
                 <FuturaParagraph>
-                  Gatsby.js is Internet Scale. Forget complicated deploys with
-                  databases and servers and their expensive, time-consuming
-                  setup costs, maintenance, and scaling fears. Gatsby.js builds
-                  your site as “static” files which can be deployed easily on
-                  dozens of services.
+                  Nikola's cobots are ready for your factory scale. Forget complicated solutions with
+                  multiple 3rd party vendors and incompatibile immobile systems. Nikola Robotics is competive, fast setup
+                  costs, low maintenance, and multi-scilled scaling. 
                 </FuturaParagraph>
               </Card>
               <Card>
-                <CardHeadline>Future-proof your website</CardHeadline>
+                <CardHeadline>Get the most out of your company</CardHeadline>
                 <FuturaParagraph>
-                  Don't build a website with last decade's tech. The future of
-                  the web is mobile, JavaScript and APIs—the {` `}
-                  <OutboundLink href="https://jamstack.org/">
-                    JAMstack
-                  </OutboundLink>. Every website is a web app and every web app
-                  is a website. Gatsby.js is the universal JavaScript framework
-                  you’ve been waiting for.
+                  Get the maximum out of your employees. The future of
+                  production line is to utilize your creative works on non-repative task— {` `}
+                  <a href="http://niko.la/">NIKOLA LABS</a>. Let the robots handel the highly repative, mudane and risky jobs in your factory.
                 </FuturaParagraph>
               </Card>
               <Card>
@@ -96,24 +88,20 @@ class IndexRoute extends React.Component {
                     Static
                   </em>
                   {` `}
-                  Progressive Web Apps
+                  Future-Proof your automation
                 </CardHeadline>
                 <FuturaParagraph>
-                  Gatsby.js is a static PWA (Progressive Web App) generator. You
-                  get code and data splitting out-of-the-box. Gatsby loads only
-                  the critical HTML, CSS, data, and JavaScript so your site
-                  loads as fast as possible. Once loaded, Gatsby prefetches
-                  resources for other pages so clicking around the site feels
-                  incredibly fast.
+                  Nikola Robotics is a partner who is there for your every automation need.
+                  Let us provide you support on setting up, maintaining, upgrading your production.
+                  Our stress free support will alow you to focus on your core skillset and not worry about needing to hire robotics support.
                 </FuturaParagraph>
               </Card>
               <Card>
                 <CardHeadline>Speed past the competition</CardHeadline>
                 <FuturaParagraph>
-                  Gatsby.js builds the fastest possible website. Instead of
-                  waiting to generate pages when requested, pre-build pages and
-                  lift them into a global cloud of servers — ready to be
-                  delivered instantly to your users wherever they are.
+                  Nikola Robotics builts turn-key end-to-end collobrative robotics with industry leading Big Data.  Get the most up to date 
+                  anallytics for your automation needs.  While other companies are intergrating multiple different solutions that introduces many fault points 
+                  - work with 1 partner - get the highest ROI for our investment
                 </FuturaParagraph>
               </Card>
 
@@ -136,10 +124,15 @@ class IndexRoute extends React.Component {
                   >
                     <h1 css={{ marginTop: 0 }}>Curious yet?</h1>
                     <FuturaParagraph>
-                      It only takes a few minutes to get up and running!
-                    </FuturaParagraph>
+                      It only takes a few minutes to schedule a free consultation 
+                     </FuturaParagraph>
+                     <FuturaParagraph>
+                      Don't worry, our sales rep always bring a Robotics & Automation Engineer for every meeting
+                     </FuturaParagraph>
+
+
                     <CtaButton to="/docs/" overrideCSS={{ marginTop: `1rem` }}>
-                      Get Started
+                      Lets get Started
                     </CtaButton>
                   </div>
                 </Container>
@@ -168,21 +161,9 @@ class IndexRoute extends React.Component {
                       },
                     }}
                   >
-                    Latest from the Gatsby blog
                   </h2>
-                  {blogPosts.edges.map(({ node }) => (
-                    <BlogPostPreviewItem
-                      post={node}
-                      key={node.fields.slug}
-                      css={{ marginBottom: rhythm(2) }}
-                    />
-                  ))}
-                  <CtaButton
-                    to="/blog/"
-                    overrideCSS={{ marginBottom: rhythm(2) }}
-                  >
-                    Read More
-                  </CtaButton>
+                
+ 
                 </Container>
               </div>
             </Cards>

@@ -6,7 +6,6 @@ import {
   CommunityIcon,
   DocsIcon,
   TutorialIcon,
-  PluginsIcon,
 } from "../assets/mobile-nav-icons"
 import presets, { colors } from "../utils/presets"
 import typography, { rhythm, scale, options } from "../utils/typography"
@@ -31,7 +30,7 @@ const MobileNavItem = ({ linkTo, label, icon }) => (
   </Link>
 )
 
-const MobileNavigation = () => (
+export default () => (
   <div
     css={{
       position: `fixed`,
@@ -45,17 +44,18 @@ const MobileNavigation = () => (
       borderTop: `1px solid ${colors.ui.light}`,
       background: colors.ui.whisper,
       fontFamily: typography.options.headerFontFamily.join(`,`),
-      paddingBottom: `env(safe-area-inset-bottom)`,
-      [presets.Tablet]: {
+      [presets.Desktop]: {
         display: `none`,
       },
     }}
   >
-    <MobileNavItem linkTo="/docs/" label="Docs" icon={DocsIcon} />
-    <MobileNavItem linkTo="/tutorial/" label="Tutorial" icon={TutorialIcon} />
-    <MobileNavItem linkTo="/plugins/" label="Plugins" icon={PluginsIcon} />
+    <MobileNavItem linkTo="/docs/" label="Robot" icon={DocsIcon} />
+    <MobileNavItem linkTo="/tutorial/" label="R&D Lab" icon={TutorialIcon} />
+    <MobileNavItem
+      linkTo="/community/"
+      label="Contact"
+      icon={CommunityIcon}
+    />
     <MobileNavItem linkTo="/blog/" label="Blog" icon={BlogIcon} />
   </div>
 )
-
-export default MobileNavigation

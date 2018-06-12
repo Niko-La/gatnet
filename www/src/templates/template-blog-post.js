@@ -4,17 +4,15 @@ import Link from "gatsby-link"
 import ArrowForwardIcon from "react-icons/lib/md/arrow-forward"
 import ArrowBackIcon from "react-icons/lib/md/arrow-back"
 import Img from "gatsby-image"
-import { OutboundLink } from "gatsby-plugin-google-analytics"
 
 import presets, { colors } from "../utils/presets"
 import typography, { rhythm, scale, options } from "../utils/typography"
 import Container from "../components/container"
 import EmailCaptureForm from "../components/email-capture-form"
-import TagsSection from "../components/tags-section"
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark
+    const post = this.props.data.allMarkdownRemark
     const prev = this.props.pathContext.prev
     const next = this.props.pathContext.next
     const prevNextLinkStyles = {
@@ -51,26 +49,17 @@ class BlogPostTemplate extends React.Component {
         {children}
       </p>
     )
-    let canonicalLink
-    if (post.frontmatter.canonicalLink) {
-      canonicalLink = (
-        <link rel="canonical" href={post.frontmatter.canonicalLink} />
-      )
-    }
-
     return (
       <div>
-        <Container
-          className="post"
-          css={{ paddingTop: rhythm(3), paddingBottom: `0 !important` }}
-        >
+        <Container className="post" css={{ paddingBottom: `0 !important` }}>
           {/* Add long list of social meta tags */}
           <Helmet>
-            <title>{post.frontmatter.title}</title>
+            <title></title>
             <link
               rel="author"
               href={`https://gatsbyjs.org${
-                post.frontmatter.author.fields.slug
+                post.frontmatter.fields.slug
+                
               }`}
             />
             <meta
@@ -117,7 +106,6 @@ class BlogPostTemplate extends React.Component {
               name="article:published_time"
               content={post.frontmatter.rawDate}
             />
-            {canonicalLink}
           </Helmet>
           <header
             css={{
@@ -173,9 +161,9 @@ class BlogPostTemplate extends React.Component {
                   <span>
                     {` `}
                     (originally published at{` `}
-                    <OutboundLink href={post.frontmatter.canonicalLink}>
+                    <a href={post.frontmatter.canonicalLink}>
                       {post.frontmatter.publishedAt}
-                    </OutboundLink>)
+                    </a>)
                   </span>
                 )}
               </BioLine>
@@ -203,9 +191,9 @@ class BlogPostTemplate extends React.Component {
                   post.frontmatter.imageAuthorLink && (
                     <em>
                       Image by{` `}
-                      <OutboundLink href={post.frontmatter.imageAuthorLink}>
+                      <a href={post.frontmatter.imageAuthorLink}>
                         {post.frontmatter.imageAuthor}
-                      </OutboundLink>
+                      </a>
                     </em>
                   )}
               </div>
@@ -216,7 +204,6 @@ class BlogPostTemplate extends React.Component {
               __html: this.props.data.markdownRemark.html,
             }}
           />
-          <TagsSection tags={this.props.data.markdownRemark.frontmatter.tags} />
           <EmailCaptureForm />
         </Container>
         <div
@@ -311,7 +298,6 @@ export const pageQuery = graphql`
         rawDate: date
         canonicalLink
         publishedAt
-        tags
         image {
           childImageSharp {
             resize(width: 1500, height: 1500) {

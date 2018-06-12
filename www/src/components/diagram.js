@@ -215,7 +215,7 @@ const Gatsby = ({ children }) => (
           color: colors.gatsby,
         }}
       >
-        <TechWithIcon icon={GraphQLIcon}>GraphQL</TechWithIcon>
+        <TechWithIcon icon={GraphQLIcon}>Nikola</TechWithIcon>
       </span>
     </ItemDescription>
   </div>
@@ -236,30 +236,29 @@ const Diagram = ({ containerCSS }) => (
       },
     }}
   >
-    <h1 css={{ marginBottom: rhythm(1.5), ...scale(0.9) }}>How Gatsby works</h1>
-    <div css={{ maxWidth: rhythm(20), margin: `0 auto ${rhythm(2)}` }}>
+    <h1 css={{ marginBottom: rhythm(1.5), ...scale(0.9) }}>How Nikola Robotics works</h1>
+    <div css={{ maxWidth: rhythm(15), margin: `0 auto ${rhythm(2)}` }}>
       <FuturaParagraph>
-        Gatsby lets you build blazing-fast sites with <em>your data</em>,
-        whatever the source. Liberate your sites from legacy CMSs and fly into
-        the future.
+        Nikola Robotics automates <em>your factory</em>,
+        using advanced AI capable, mobile collaborative robots.
       </FuturaParagraph>
     </div>
 
     <Segment className="Source">
-      <SegmentTitle>Data Sources</SegmentTitle>
+      <SegmentTitle>1. Consultating & Discovery</SegmentTitle>
       <SourceItems>
         <SourceItem>
-          <ItemTitle>CMSs</ItemTitle>
-          <ItemDescription>Contentful, Drupal, WordPress, etc.</ItemDescription>
+          <ItemTitle>Your Needs</ItemTitle>
+          <ItemDescription>Every factory is unique. Find out what your best deployment options are for maxium ROI.</ItemDescription>
         </SourceItem>
         <SourceItem>
-          <ItemTitle>Markdown</ItemTitle>
-          <ItemDescription>Documentation, Posts, etc.</ItemDescription>
+          <ItemTitle>Try cobot</ItemTitle>
+          <ItemDescription>We will bring our own robots so you can try it without purchasing till satisfied.</ItemDescription>
         </SourceItem>
         <SourceItem>
-          <ItemTitle>Data</ItemTitle>
+          <ItemTitle>Customize</ItemTitle>
           <ItemDescription>
-            APIs, Databases, YAML, JSON, CSV, etc.
+            Every assembly line has its own challenges.  Built a unique robot for your use-case. Custom controller create unique robot
           </ItemDescription>
         </SourceItem>
       </SourceItems>
@@ -290,9 +289,9 @@ const Diagram = ({ containerCSS }) => (
           }}
         >
           <ItemDescription>
-            HTML &middot; CSS &middot;{` `}
+            Cobot &middot; AI Vision &middot;{` `}
             <TechWithIcon icon={ReactJSIcon} height="1.1em">
-              React
+              Mobility
             </TechWithIcon>
           </ItemDescription>
         </div>
@@ -309,10 +308,9 @@ const Diagram = ({ containerCSS }) => (
           paddingBottom: rhythm(1),
         }}
       >
-        <ItemTitle>Static Web Host</ItemTitle>
+        <ItemTitle>Continuous Intergration / Continuous Deployment</ItemTitle>
         <ItemDescription>
-          Amazon S3, Netlify, GitHub Pages, Surge.sh, Aerobatic, Now.sh, & many
-          more
+          24/7 Support. Quickly update robot with no programing & Get best-in-class Factory Anllytics Data
         </ItemDescription>
       </div>
     </Segment>

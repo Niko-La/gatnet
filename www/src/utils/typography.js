@@ -59,7 +59,7 @@ const options = {
       h3: {
         ...scale(2 / 5),
         lineHeight: 1,
-        marginTop: rhythm(options.blockMarginBottom * 2),
+        marginTop: rhythm(options.blockMarginBottom),
         marginBottom: rhythm(options.blockMarginBottom / 2),
       },
       h4: {

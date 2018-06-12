@@ -1,8 +1,7 @@
 import React from "react"
 import Link from "gatsby-link"
-import TwitterIcon from "react-icons/lib/fa/twitter"
 import GithubIcon from "react-icons/lib/go/mark-github"
-import { OutboundLink } from "gatsby-plugin-google-analytics"
+import TwitterIcon from "react-icons/lib/fa/twitter"
 
 import SearchForm from "../components/search-form"
 import DiscordIcon from "../components/discord"
@@ -20,7 +19,7 @@ const navItemStyles = {
   textTransform: `uppercase`,
   letterSpacing: `0.03em`,
   lineHeight: `calc(${presets.headerHeight} - 6px)`,
-  padding: `6px ${rhythm(1 / 4)} 0 ${rhythm(1 / 2)}`,
+  padding: `6px ${rhythm(1 / 2)} 0`,
   position: `relative`,
   top: 0,
   transition: `color .15s ease-out`,
@@ -152,9 +151,9 @@ export default ({ pathname }) => {
             },
           }}
         >
-          <NavItem linkTo="/docs/">Docs</NavItem>
-          <NavItem linkTo="/tutorial/">Tutorial</NavItem>
-          <NavItem linkTo="/plugins/">Plugins</NavItem>
+          <NavItem linkTo="/docs/">Robots</NavItem>
+          <NavItem linkTo="/tutorial/">R&D LAB</NavItem>
+          <NavItem linkTo="/community/">Contact</NavItem>
           <NavItem linkTo="/features/">Features</NavItem>
           <NavItem linkTo="/blog/">Blog</NavItem>
         </ul>
@@ -164,13 +163,11 @@ export default ({ pathname }) => {
             marginLeft: `auto`,
           }}
         >
-          <SearchForm
-            key="SearchForm"
-            iconStyles={{ ...socialIconsStyles }}
-            isHomepage={isHomepage}
-          />
-          <OutboundLink
-            href="https://github.com/gatsbyjs/gatsby"
+          {!isHomepage && (
+            <SearchForm key="SearchForm" styles={{ ...navItemStyles }} />
+          )}
+          <a
+            href="https://github.com/Niko-La"
             title="GitHub"
             css={{
               ...navItemStyles,
@@ -178,46 +175,28 @@ export default ({ pathname }) => {
             }}
           >
             <GithubIcon style={{ verticalAlign: `text-top` }} />
-          </OutboundLink>
-          <div
+          </a>
+          <a
+            href="https://discord.gg/KtvAhfh"
+            title="Discord"
             css={{
-              display: `none`,
-              [presets.Desktop]: { display: !isHomepage && `inline-block` },
-              [presets.Hd]: { display: `inline-block` },
+              ...navItemStyles,
+              ...socialIconsStyles,
             }}
           >
-            <OutboundLink
-              href="https://discord.gg/0ZcbPKXt5bVoxkfV"
-              title="Discord"
-              css={{
-                ...navItemStyles,
-                ...socialIconsStyles,
-              }}
-            >
-              <DiscordIcon overrideCSS={{ verticalAlign: `text-top` }} />
-            </OutboundLink>
-            <OutboundLink
-              href="https://twitter.com/gatsbyjs"
-              title="@gatsbyjs"
-              css={{
-                ...navItemStyles,
-                ...socialIconsStyles,
-              }}
-            >
-              <TwitterIcon style={{ verticalAlign: `text-top` }} />
-            </OutboundLink>
-          </div>
-          <OutboundLink
-            href="https://www.gatsbyjs.com"
-            title="gatsbyjs.com"
+            <DiscordIcon overrideCSS={{ verticalAlign: `text-top` }} />
+          </a>
+          <a
+            href="https://twitter.com/diynikola"
+            title="@diynikola"
             css={{
               ...navItemStyles,
               ...socialIconsStyles,
               paddingRight: 0,
             }}
           >
-            .com
-          </OutboundLink>
+            <TwitterIcon style={{ verticalAlign: `text-top` }} />
+          </a>
         </div>
       </div>
     </div>

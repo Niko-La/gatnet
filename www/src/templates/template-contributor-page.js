@@ -1,10 +1,10 @@
 import React from "react"
 import Img from "gatsby-image"
-import { OutboundLink } from "gatsby-plugin-google-analytics"
 
 import Container from "../components/container"
 import BlogPostPreviewItem from "../components/blog-post-preview-item"
-import typography, { rhythm, options } from "../utils/typography"
+import typography, { rhythm, scale, options } from "../utils/typography"
+import presets from "../utils/presets"
 
 class ContributorPageTemplate extends React.Component {
   render() {
@@ -46,10 +46,9 @@ class ContributorPageTemplate extends React.Component {
             >
               {contributor.bio}
             </p>
-            <OutboundLink href={`https://twitter.com/${contributor.twitter}`}>
-              {` `}
+            <a href={`https://twitter.com/${contributor.twitter}`}>
               {contributor.twitter}
-            </OutboundLink>
+            </a>
           </div>
         </div>
         <div

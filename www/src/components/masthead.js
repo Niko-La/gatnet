@@ -14,7 +14,7 @@ const MastheadContent = () => (
     css={{
       display: `flex`,
       padding: vP,
-      paddingTop: rhythm(5),
+      paddingTop: rhythm(4),
       paddingBottom: rhythm(1),
       paddingBottom: rhythm(1),
       flexGrow: `0`,
@@ -26,7 +26,7 @@ const MastheadContent = () => (
         paddingRight: 0,
       },
       [presets.Tablet]: {
-        paddingTop: rhythm(5),
+        paddingTop: rhythm(4),
       },
       [presets.Desktop]: {
         paddingTop: rhythm(5),
@@ -81,10 +81,10 @@ const MastheadContent = () => (
           },
         }}
       >
-        Blazing-fast static site generator for React
+        Nikola Robotics is driving a manufacturing revolution
       </h1>
       <CtaButton to="/docs/">
-        <span css={{ verticalAlign: `middle` }}>Get Started</span>
+        <span css={{ verticalAlign: `middle` }}>Get one! </span>
         {` `}
         <ArrowForwardIcon
           css={{ verticalAlign: `baseline`, marginLeft: `.2em` }}
