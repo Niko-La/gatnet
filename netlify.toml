@@ -1,3 +1,9 @@
+[build]
+  # This is the directory to change to before starting a build.
+  base    = "www/"
+  publish = "publish/"
+  command = "gatsby build"
+
 [build.environment]
   NODE_VERSION = "8"
   YARN_VERSION = "1.2.1"
